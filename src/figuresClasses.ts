@@ -24,7 +24,7 @@ export class Triangle implements Figure {
     }
 
     if (a + b <= c || a + c <= b || b + c <= a) {
-      throw new Error('Triangle inequality violated');
+      throw new Error(`Sides ${a}, ${b} and ${c} can't form a triangle`);
     }
 
     this.color = color;
@@ -52,7 +52,6 @@ export class Circle implements Figure {
     if (radius <= 0) {
       throw new Error('Radius must be > 0');
     }
-
     this.color = color;
     this.radius = radius;
   }
@@ -69,18 +68,18 @@ export class Rectangle implements Figure {
 
   color: Color;
 
-  height: number;
-
   width: number;
 
-  constructor(color: Color, height: number, width: number) {
-    if (height <= 0 || width <= 0) {
-      throw new Error('Height or width must be > 0');
+  height: number;
+
+  constructor(color: Color, width: number, height: number) {
+    if (width <= 0 || height <= 0) {
+      throw new Error('Width and height must be > 0');
     }
 
     this.color = color;
-    this.height = height;
     this.width = width;
+    this.height = height;
   }
 
   getArea(): number {
